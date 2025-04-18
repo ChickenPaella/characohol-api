@@ -1,16 +1,16 @@
 spring:
   application:
     name: characohol-api
-  datasource:
-    url: jdbc:h2:mem:testdb
+  r2dbc:
+    url: r2dbc:h2:mem:///testdb
     username: sa
     password:
-    driver-class-name: org.h2.Driver
 
-  jpa:
-    hibernate:
-      ddl-auto: create  # ?? update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG
+    io.r2dbc: DEBUG
